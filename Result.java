@@ -6,7 +6,7 @@ public class Result {
     private boolean isCompleted;
     private List<Integer> successIndexList;
 
-    public Result(boolean isSuccess, boolean isCompleted , List<Integer> successIndexList){
+    public Result(boolean isSuccess, boolean isCompleted, List<Integer> successIndexList) {
         this.isSuccess = isSuccess;
         this.isCompleted = isCompleted;
         this.successIndexList = successIndexList;

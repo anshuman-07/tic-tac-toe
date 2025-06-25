@@ -10,6 +10,11 @@ public class SuccessResult {
         this.success = success;
     }
 
-    public List<Integer> getList() { return list; }
-    public boolean isSuccess() { return success; }
+    public List<Integer> getList() {
+        return list;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
 }

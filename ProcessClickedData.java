@@ -4,9 +4,9 @@ import java.util.Objects;
 import java.util.function.Consumer;
 
 public class ProcessClickedData {
-    private final HashMap<Integer,String> indexMap;
+    private final HashMap<Integer, String> indexMap;
 
-    public ProcessClickedData(){
+    public ProcessClickedData() {
         indexMap = new HashMap<>();
     }
 
@@ -20,14 +20,14 @@ public class ProcessClickedData {
      * @param callback the callback to consume the Result of the operation
      */
     public void handleClick(int index, String value, Consumer<Result> callback) {
-        indexMap.put(index,value);
+        indexMap.put(index, value);
         SuccessResult result = isSuccess(index);
-        if(result.isSuccess()) {
+        if (result.isSuccess()) {
             callback.accept(new Result(true, false, result.getList()));
-        } else if(isCompleted(index)) {
+        } else if (isCompleted(index)) {
             callback.accept(new Result(false, true, List.of()));
         } else {
-            callback.accept(new Result(false , false , List.of()));
+            callback.accept(new Result(false, false, List.of()));
         }
     }
 
@@ -39,6 +39,7 @@ public class ProcessClickedData {
     public HashMap<Integer, String> getIndexMap() {
         return indexMap;
     }
+
     // 0, 1 , 2
     // 3, 4 , 5
     // 6, 7 , 8
@@ -69,7 +70,7 @@ public class ProcessClickedData {
         return new SuccessResult(List.of(), false);
     }
 
-    private boolean isCompleted(int index){
+    private boolean isCompleted(int index) {
         return indexMap.size() == 9;
     }
 }
