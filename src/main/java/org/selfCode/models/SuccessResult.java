@@ -1,4 +1,4 @@
-package src.main.java.org.ticTacToe;
+package src.main.java.org.selfCode.models;
 
 import java.util.List;
 

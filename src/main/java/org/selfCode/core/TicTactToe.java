@@ -1,15 +1,55 @@
-package src.main.java.org.ticTacToe;
+package src.main.java.org.selfCode.core;
+
+import src.main.java.org.selfCode.models.Player;
+import src.main.java.org.selfCode.models.CombinedResult;
+import src.main.java.org.selfCode.models.SuccessResult;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
-import java.util.function.Consumer;
 
-public class ProcessClickedData {
-    private final HashMap<Integer, String> indexMap;
+public class TicTactToe {
+    private Player player1;
+    private Player player2;
+    private Player currentPlayer;
 
-    public ProcessClickedData() {
+    private  HashMap<Integer, String> indexMap;
+
+    public Player getPlayer1() {
+        return player1;
+    }
+
+    public Player getPlayer2() {
+        return player2;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public TicTactToe() {
+        initializeBoard();
+    }
+
+    public void setPlayer1(Player player){
+        this.player1 = player;
+    }
+
+    public void setPlayer2(Player player){
+        this.player2 = player;
+    }
+
+    public void setCurrentPlayer(Player player){
+        this.currentPlayer = player;
+    }
+
+
+
+    private void initializeBoard() {
         indexMap = new HashMap<>();
+        for (int i = 0; i < 9; i++) {
+            indexMap.put(i,String.valueOf(i));
+        }
     }
 
     /**
@@ -19,18 +59,21 @@ public class ProcessClickedData {
      *
      * @param index    the index where the click occurred
      * @param value    the value to set at the specified index
-     * @param callback the callback to consume the src.main.java.org.example.Result of the operation
      */
-    public void handleClick(int index, String value, Consumer<Result> callback) {
+    public CombinedResult handleClick(int index, String value) {
         indexMap.put(index, value);
         SuccessResult result = isSuccess(index);
         if (result.isSuccess()) {
-            callback.accept(new Result(true, false, result.getList()));
-        } else if (isCompleted(index)) {
-            callback.accept(new Result(false, true, List.of()));
+            return new CombinedResult(true, false, result.getList());
+        } else if (isBoardFull()) {
+            return new CombinedResult(false, true, List.of());
         } else {
-            callback.accept(new Result(false, false, List.of()));
+            return new CombinedResult(false, false, List.of());
         }
+    }
+
+    public void switchPlayer() {
+        currentPlayer = currentPlayer.getPlayerName().equals(player1.getPlayerName()) ? player2 : player1;
     }
 
     /**
@@ -72,7 +115,13 @@ public class ProcessClickedData {
         return new SuccessResult(List.of(), false);
     }
 
-    private boolean isCompleted(int index) {
-        return indexMap.size() == 9;
+    public boolean isBoardFull() {
+        for (String cell : indexMap.values()) {
+            if (cell.matches("\\d")) {
+                return false;
+            }
+        }
+        return true;
+
     }
 }

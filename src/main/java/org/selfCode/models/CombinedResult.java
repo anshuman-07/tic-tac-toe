@@ -1,16 +1,16 @@
-package src.main.java.org.ticTacToe;
+package src.main.java.org.selfCode.models;
 
 import java.util.List;
 
-public class Result {
+public class CombinedResult {
 
     private boolean isSuccess;
-    private boolean isCompleted;
+    private boolean isBoardFilled;
     private List<Integer> successIndexList;
 
-    public Result(boolean isSuccess, boolean isCompleted, List<Integer> successIndexList) {
+    public CombinedResult(boolean isSuccess, boolean isCompleted, List<Integer> successIndexList) {
         this.isSuccess = isSuccess;
-        this.isCompleted = isCompleted;
+        this.isBoardFilled = isCompleted;
         this.successIndexList = successIndexList;
     }
 
@@ -24,12 +24,12 @@ public class Result {
         isSuccess = success;
     }
 
-    public boolean isCompleted() {
-        return isCompleted;
+    public boolean isBoardFilled() {
+        return isBoardFilled;
     }
 
-    public void setCompleted(boolean completed) {
-        isCompleted = completed;
+    public void setBoardFilled(boolean boardFilled) {
+        isBoardFilled = boardFilled;
     }
 
     public List<Integer> getSuccessIndexList() {
