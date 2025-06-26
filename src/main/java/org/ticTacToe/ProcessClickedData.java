@@ -1,3 +1,5 @@
+package src.main.java.org.ticTacToe;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -13,11 +15,11 @@ public class ProcessClickedData {
     /**
      * Handles a click event at the specified index with the given value.
      * Updates the internal index map, checks for a win or completion,
-     * and invokes the provided callback with a Result indicating the outcome.
+     * and invokes the provided callback with a src.main.java.org.example.Result indicating the outcome.
      *
      * @param index    the index where the click occurred
      * @param value    the value to set at the specified index
-     * @param callback the callback to consume the Result of the operation
+     * @param callback the callback to consume the src.main.java.org.example.Result of the operation
      */
     public void handleClick(int index, String value, Consumer<Result> callback) {
         indexMap.put(index, value);

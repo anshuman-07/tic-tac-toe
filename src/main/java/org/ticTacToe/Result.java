@@ -1,3 +1,5 @@
+package src.main.java.org.ticTacToe;
+
 import java.util.List;
 
 public class Result {
